@@ -1,0 +1,18 @@
+# Write SumoLogic Terraform Provider latest version to a file on each release.
+
+name: write-provider-version
+on:
+  release:
+    types: [created, published]
+
+jobs:
+  write-version:
+    runs-on: ubuntu-latest
+    name: Write version to file
+    steps:
+    - uses: actions/checkout@master
+    - name: Update version
+      id: version
+      uses: brettdorrans/write-version-to-file@master
+      with:
+        filename: '/.terraform-provider-version'
