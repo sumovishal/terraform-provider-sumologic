@@ -28,14 +28,16 @@ jobs:
     needs: checkout
     name: Write version to file
     steps:
-      - run: echo "Repo workspace: $GITHUB_WORKSPACE"
+      - name: Print workspace
+        run: echo "Repo workspace - $GITHUB_WORKSPACE"
 
       - name: Update version
         uses: brettdorrans/write-version-to-file@master
         with:
           filename: '$GITHUB_WORKSPACE/terraform-provider-sumologic/.terraform-provider-version'
 
-      - run: |
+      - name: Print workspace dir
+        run: |
           ls -l $GITHUB_WORKSPACE
           ls -l $GITHUB_WORKSPACE/terraform-provider-sumologic
 
