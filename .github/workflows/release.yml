@@ -41,7 +41,6 @@ jobs:
       - name: Print workspace dir
         run: |
           ls -l $GITHUB_WORKSPACE
-          ls -l $GITHUB_WORKSPACE/terraform-provider-sumologic
 
   goreleaser:
     runs-on: ubuntu-latest
