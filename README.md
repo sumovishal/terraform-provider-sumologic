@@ -1,16 +1,14 @@
-<a href="https://terraform.io">
-    <img src="https://cdn.rawgit.com/hashicorp/terraform-website/master/content/source/assets/images/logo-hashicorp.svg" alt="Terraform logo" title="Terrafpr," align="right" height="50" />
-</a>
+# ⚠️ (Personal Fork) Terraform Provider for Sumo Logic
+---
+⚠️ DO NOT USE THIS PROVIDER. 
 
-# Terraform Provider for Sumo Logic
+Official Sumo Logic Terraform Provider is [here](https://github.com/SumoLogic/terraform-provider-sumologic)
 
-- Website: [terraform.io](https://terraform.io)
-- Chat: [gitter](https://gitter.im/hashicorp-terraform/Lobby)
-- Mailing List: [Google Groups](http://groups.google.com/group/terraform-tool)
+---
+
 
 The Terraform Sumo Logic provider is a plugin for Terraform that allows for the full lifecycle management of Sumo Logic resources.
 
-This provider is maintained by Sumo Logic.
 
 ## Getting started
 
