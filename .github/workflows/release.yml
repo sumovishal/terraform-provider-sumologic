@@ -24,7 +24,7 @@ jobs:
           fetch-depth: 0
       - name: Print workspace dir
         run: |
-          ls -l $GITHUB_WORKSPACE
+          ls -al $GITHUB_WORKSPACE
 
   write-version:
     runs-on: ubuntu-latest
@@ -34,7 +34,7 @@ jobs:
       - name: Print workspace
         run: |
           echo "Repo workspace - $GITHUB_WORKSPACE"
-          ls -l $GITHUB_WORKSPACE
+          ls -la $GITHUB_WORKSPACE
 
       - name: Update version
         uses: brettdorrans/write-version-to-file@master
@@ -43,7 +43,7 @@ jobs:
 
       - name: Print workspace dir
         run: |
-          ls -l $GITHUB_WORKSPACE
+          ls -la $GITHUB_WORKSPACE
 
   goreleaser:
     runs-on: ubuntu-latest
