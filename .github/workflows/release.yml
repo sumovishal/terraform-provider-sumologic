@@ -15,41 +15,58 @@ on:
     tags:
       - 'v*'
 jobs:
-  checkout:
+  # checkout:
+  #   runs-on: ubuntu-latest
+  #   name: Checkout the repo
+  #   steps:
+  #     - uses: actions/checkout@v2
+  #       with:
+  #         fetch-depth: 0
+  #     - name: Print workspace dir
+  #       run: |
+  #         ls -al $GITHUB_WORKSPACE
+
+  # write-version:
+  #   runs-on: ubuntu-latest
+  #   needs: checkout
+  #   name: Write version to file
+  #   steps:
+  #     - name: Print workspace
+  #       run: |
+  #         echo "Repo workspace - $GITHUB_WORKSPACE"
+  #         ls -la $GITHUB_WORKSPACE
+
+  #     - name: Update version
+  #       uses: brettdorrans/write-version-to-file@master
+  #       with:
+  #         filename: '$GITHUB_WORKSPACE/.terraform-provider-version'
+
+  #     - name: Print workspace dir
+  #       run: |
+  #         ls -la $GITHUB_WORKSPACE
+
+  goreleaser:
     runs-on: ubuntu-latest
-    name: Checkout the repo
+    name: Create a new release
     steps:
-      - uses: actions/checkout@v2
+      - name: Checkout the repo
+        uses: actions/checkout@v2
         with:
           fetch-depth: 0
+
       - name: Print workspace dir
         run: |
           ls -al $GITHUB_WORKSPACE
-
-  write-version:
-    runs-on: ubuntu-latest
-    needs: checkout
-    name: Write version to file
-    steps:
-      - name: Print workspace
-        run: |
-          echo "Repo workspace - $GITHUB_WORKSPACE"
-          ls -la $GITHUB_WORKSPACE
 
       - name: Update version
         uses: brettdorrans/write-version-to-file@master
         with:
           filename: '$GITHUB_WORKSPACE/.terraform-provider-version'
 
-      - name: Print workspace dir
+      - name: Version info
         run: |
-          ls -la $GITHUB_WORKSPACE
+          cat $GITHUB_WORKSPACE/.terraform-provider-version
 
-  goreleaser:
-    runs-on: ubuntu-latest
-    needs: write-version
-    name: Create new release
-    steps:
       - name: Set up Go
         uses: actions/setup-go@v2
         with:
