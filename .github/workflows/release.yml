@@ -28,10 +28,16 @@ jobs:
     needs: checkout
     name: Write version to file
     steps:
-    - name: Update version
-      uses: brettdorrans/write-version-to-file@master
-      with:
-        filename: '${GITHUB_WORKSPACE}/terraform-provider-sumologic/.terraform-provider-version'
+      - run: echo "Repo workspace: $GITHUB_WORKSPACE"
+
+      - name: Update version
+        uses: brettdorrans/write-version-to-file@master
+        with:
+          filename: '$GITHUB_WORKSPACE/terraform-provider-sumologic/.terraform-provider-version'
+
+      - run: |
+          ls -l $GITHUB_WORKSPACE
+          ls -l $GITHUB_WORKSPACE/terraform-provider-sumologic
 
   goreleaser:
     runs-on: ubuntu-latest
