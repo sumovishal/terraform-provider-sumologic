@@ -67,6 +67,12 @@ jobs:
         run: |
           cat $GITHUB_WORKSPACE/.terraform-provider-version
 
+      - name:  Commit new version
+        uses: actions-js/push@master
+        with:
+          message: "Add new version to version file"
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+
       - name: Set up Go
         uses: actions/setup-go@v2
         with:
